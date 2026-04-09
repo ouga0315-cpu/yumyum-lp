@@ -168,9 +168,11 @@ section{padding:96px 0;position:relative}
 .concept{text-align:center;padding:80px 0 40px}
 .concept .copy{
   font-size:clamp(16px,2.2vw,22px);
-  letter-spacing:.15em;line-height:2.2;color:var(--navy);
-  max-width:760px;margin:0 auto;
+  letter-spacing:.08em;line-height:2.2;color:var(--navy);
+  max-width:900px;margin:0 auto;padding:0 24px;
+  word-break:keep-all;overflow-wrap:break-word;
 }
+.concept .copy span{display:inline-block}
 .concept .copy .sun{color:#b5902e}
 .concept .copy .moon{color:#3a476b}
 .concept .copy .divider{
@@ -514,9 +516,9 @@ footer .copy{color:#6c7387;margin-top:20px;font-size:11px}
 <section class="concept">
   <div class="wrap">
     <p class="copy">
-      <span class="sun">昼は、家族連れやお一人でも立ち寄れる、ひらかれた食堂＆カフェ。</span>
+      <span class="sun">昼は、家族連れやお一人でも立ち寄れる、<wbr>ひらかれた食堂＆カフェ。</span>
       <span class="divider"></span>
-      <span class="moon">夜は、静けさに包まれた美術館のなかで、<br>ゆっくりと味わうコース料理。</span>
+      <span class="moon">夜は、静けさに包まれた美術館のなかで、<wbr>ゆっくりと味わうコース料理。</span>
     </p>
   </div>
 </section>
