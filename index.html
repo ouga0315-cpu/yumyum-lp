@@ -115,12 +115,14 @@ header nav a:hover{color:var(--navy)}
     inset 0 -1px 0 rgba(0,0,0,.06);
 }
 .hero .logo-mark{
-  position:relative;z-index:1;width:220px;
-  filter:drop-shadow(0 2px 4px rgba(0,0,0,.15));
+  position:relative;z-index:1;width:260px;
+  filter:
+    drop-shadow(0 14px 18px rgba(0,0,0,.22))
+    drop-shadow(0 4px 6px rgba(0,0,0,.15));
 }
 @media(max-width:720px){
   .hero .logo-stage{width:240px;height:240px;border-radius:28px}
-  .hero .logo-mark{width:170px}
+  .hero .logo-mark{width:200px}
 }
 .hero h1{
   font-size:clamp(26px,4.4vw,44px);
