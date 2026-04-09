@@ -102,34 +102,48 @@ header nav a:hover{color:var(--navy)}
              #dfe3ec;
   color:#fff;
 }
-/* ロゴを皿に載せてスポットライトで照らす演出 */
+/* 真上から見た白い陶器皿の上にロゴを盛り付けた演出 */
 .hero .logo-stage{
-  position:relative;width:300px;height:300px;margin:0 auto 28px;
+  position:relative;width:340px;height:340px;margin:0 auto 28px;
   display:flex;align-items:center;justify-content:center;
+  filter:drop-shadow(0 30px 40px rgba(0,0,0,.55)) drop-shadow(0 8px 12px rgba(0,0,0,.35));
 }
-/* 皿（上から見た楕円ではなく、円形の陶器皿） */
+/* 皿本体: フラットな白磁。リムと内側ウェルの段差を複数ストップで表現 */
 .hero .logo-stage::before{
   content:"";position:absolute;inset:0;border-radius:50%;
   background:
-    radial-gradient(circle at 50% 38%, #fffdf6 0%, #fdf6e3 35%, #f0e4c6 60%, #c9ab74 85%, #8a6d3a 100%);
+    /* 細かい放射状の質感ストライプ（リムのテクスチャ） */
+    repeating-conic-gradient(from 0deg, rgba(0,0,0,.035) 0deg 0.6deg, rgba(255,255,255,0) 0.6deg 1.6deg),
+    /* リムと内側ウェルの段差 */
+    radial-gradient(circle at 50% 50%,
+      #ffffff 0%, #fbfbfa 54%,
+      rgba(0,0,0,.08) 56%, rgba(0,0,0,.02) 58%,
+      #ffffff 60%, #f4f2ec 92%, #d9d4c6 100%);
   box-shadow:
-    0 18px 40px rgba(0,0,0,.55),
-    inset 0 -8px 20px rgba(0,0,0,.12),
-    inset 0 4px 10px rgba(255,255,255,.55);
+    inset 0 0 40px rgba(0,0,0,.06),
+    inset 0 2px 4px rgba(255,255,255,.9);
 }
-/* スポットライトの光輪（皿の上に降り注ぐ光） */
+/* ソース & 緑（盛り付け風デコ） - SVGで描いた茶色のスウッシュとハーブ */
 .hero .logo-stage::after{
-  content:"";position:absolute;left:50%;top:-40%;
-  width:260%;height:220%;transform:translateX(-50%);
-  background:radial-gradient(ellipse at 50% 30%, rgba(255,238,190,.55) 0%, rgba(255,238,190,.18) 25%, rgba(255,238,190,0) 55%);
-  pointer-events:none;mix-blend-mode:screen;
+  content:"";position:absolute;inset:8%;border-radius:50%;pointer-events:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><defs><filter id='b'><feGaussianBlur stdDeviation='1.2'/></filter></defs><path d='M30,120 C60,150 140,150 170,115 C150,145 70,160 30,120 Z' fill='%23a0673b' opacity='.55' filter='url(%23b)'/><path d='M40,135 Q100,170 160,130' stroke='%237a4a27' stroke-width='3' fill='none' opacity='.45' filter='url(%23b)'/><circle cx='55' cy='60' r='5' fill='%234a7a35' opacity='.55'/><circle cx='62' cy='55' r='3.5' fill='%236a9a45' opacity='.6'/><circle cx='150' cy='70' r='4' fill='%234a7a35' opacity='.5'/><circle cx='145' cy='62' r='2.5' fill='%236a9a45' opacity='.55'/></svg>");
+  background-size:100% 100%;background-repeat:no-repeat;
 }
 .hero .logo-mark{
-  position:relative;z-index:1;width:200px;
-  filter:drop-shadow(0 3px 6px rgba(0,0,0,.25)) drop-shadow(0 0 2px rgba(255,255,255,.3));
+  position:relative;z-index:2;width:200px;
+  filter:
+    drop-shadow(0 4px 8px rgba(0,0,0,.35))
+    drop-shadow(0 0 1px rgba(0,0,0,.5));
+}
+/* ロゴ背後の明るい下地（皿中央のハイライト）でロゴの視認性を底上げ */
+.hero .logo-stage .spot{
+  position:absolute;left:50%;top:50%;width:70%;height:70%;
+  transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle, rgba(255,253,245,.95) 0%, rgba(255,253,245,.55) 45%, rgba(255,253,245,0) 72%);
+  z-index:1;pointer-events:none;
 }
 @media(max-width:720px){
-  .hero .logo-stage{width:240px;height:240px}
+  .hero .logo-stage{width:260px;height:260px}
   .hero .logo-mark{width:160px}
 }
 .hero h1{
@@ -510,7 +524,7 @@ footer .copy{color:#6c7387;margin-top:20px;font-size:11px}
 <!-- HERO -->
 <section class="hero">
   <div>
-    <div class="logo-stage"><img class="logo-mark" src="assets/logo-2.png" alt="SHOKUDO & CAFÉ yum-yum"></div>
+    <div class="logo-stage"><span class="spot"></span><img class="logo-mark" src="assets/logo-2.png" alt="SHOKUDO & CAFÉ yum-yum"></div>
     <h1>昼はカジュアルに。<br>夜は、美術館の特別な時間に。</h1>
     <p class="lead">松本市美術館の中にある、レストラン &amp; カフェ。<br>信州の恵みを、シェフのひと手間で。</p>
     <div class="tagline">— DAY &amp; NIGHT AT THE MUSEUM —</div>
