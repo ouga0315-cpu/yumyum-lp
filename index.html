@@ -102,7 +102,36 @@ header nav a:hover{color:var(--navy)}
              #dfe3ec;
   color:#fff;
 }
-.hero .logo-mark{width:220px;margin:0 auto 28px;opacity:.98;filter:drop-shadow(0 2px 14px rgba(0,0,0,.35))}
+/* ロゴを皿に載せてスポットライトで照らす演出 */
+.hero .logo-stage{
+  position:relative;width:300px;height:300px;margin:0 auto 28px;
+  display:flex;align-items:center;justify-content:center;
+}
+/* 皿（上から見た楕円ではなく、円形の陶器皿） */
+.hero .logo-stage::before{
+  content:"";position:absolute;inset:0;border-radius:50%;
+  background:
+    radial-gradient(circle at 50% 38%, #fffdf6 0%, #fdf6e3 35%, #f0e4c6 60%, #c9ab74 85%, #8a6d3a 100%);
+  box-shadow:
+    0 18px 40px rgba(0,0,0,.55),
+    inset 0 -8px 20px rgba(0,0,0,.12),
+    inset 0 4px 10px rgba(255,255,255,.55);
+}
+/* スポットライトの光輪（皿の上に降り注ぐ光） */
+.hero .logo-stage::after{
+  content:"";position:absolute;left:50%;top:-40%;
+  width:260%;height:220%;transform:translateX(-50%);
+  background:radial-gradient(ellipse at 50% 30%, rgba(255,238,190,.55) 0%, rgba(255,238,190,.18) 25%, rgba(255,238,190,0) 55%);
+  pointer-events:none;mix-blend-mode:screen;
+}
+.hero .logo-mark{
+  position:relative;z-index:1;width:200px;
+  filter:drop-shadow(0 3px 6px rgba(0,0,0,.25)) drop-shadow(0 0 2px rgba(255,255,255,.3));
+}
+@media(max-width:720px){
+  .hero .logo-stage{width:240px;height:240px}
+  .hero .logo-mark{width:160px}
+}
 .hero h1{
   font-size:clamp(26px,4.4vw,44px);
   margin:0 0 16px;letter-spacing:.14em;font-weight:500;
@@ -481,7 +510,7 @@ footer .copy{color:#6c7387;margin-top:20px;font-size:11px}
 <!-- HERO -->
 <section class="hero">
   <div>
-    <img class="logo-mark" src="assets/logo-2.png" alt="SHOKUDO & CAFÉ yum-yum">
+    <div class="logo-stage"><img class="logo-mark" src="assets/logo-2.png" alt="SHOKUDO & CAFÉ yum-yum"></div>
     <h1>昼はカジュアルに。<br>夜は、美術館の特別な時間に。</h1>
     <p class="lead">松本市美術館の中にある、レストラン &amp; カフェ。<br>信州の恵みを、シェフのひと手間で。</p>
     <div class="tagline">— DAY &amp; NIGHT AT THE MUSEUM —</div>
